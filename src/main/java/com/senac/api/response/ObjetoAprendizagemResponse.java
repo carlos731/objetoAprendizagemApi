@@ -11,6 +11,7 @@ public class ObjetoAprendizagemResponse{
 	private Long id;
 	private String descricao;
 	private byte[] blob;
+	private String tipo;
 	private Boolean status;
 	private GrauDificuldade grauDificuldadeId;
 	private Usuario usuarioId;
@@ -33,6 +34,12 @@ public class ObjetoAprendizagemResponse{
 	}
 	public void setBlob(byte[] blob) {
 		this.blob = blob;
+	}
+	public String getTipo() {
+		return tipo;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 	public Boolean getStatus() {
 		return status;

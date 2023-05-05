@@ -54,6 +54,10 @@ public class ObjetoAprendizagemService {
 		return obj;
 	}
 	
+    public ObjetoAprendizagem getArquivo(Long fileId) throws Exception {
+        return objetoAprendizagemRepository.findById(fileId).orElseThrow( () -> new Exception("Arquivo com Id: " + fileId + " não existe!"));
+    }
+	
 	public ObjetoAprendizagem atualizar(Long id, ObjetoAprendizagem objAtualizado) {
 		Optional<ObjetoAprendizagem> objEncontrado = objetoAprendizagemRepository.findById(id);
 		

@@ -226,9 +226,9 @@ public class DBService {
 		encontroRepository.saveAll(Arrays.asList(encontro1));
 		
 		//situacao_aprendizagem
-		List<CopetenciaIndicador> indicadores = new ArrayList();
+		List<CopetenciaIndicador> indicadores = new ArrayList<>();
 		indicadores.add(ind1);
-		List<CopetenciaIndicador> indicadores2 = new ArrayList();
+		List<CopetenciaIndicador> indicadores2 = new ArrayList<>();
 		indicadores2.add(ind1);
 		indicadores2.add(ind2);
 		SituacaoAprendizagem st1 = new SituacaoAprendizagem(null, "Situacao 1", "Descricao", 1, true, planejamentoUc1, grau1, badge1, indicadores);

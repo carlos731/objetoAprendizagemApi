@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.senac.api.entity.GrauDificuldade;
 import com.senac.api.entity.ObjetoAprendizagem;
@@ -68,10 +67,9 @@ public class ObjetoAprendizagemController {
 		obj.setUsuarioId(usuarioId);
 		obj.setAprendizagens(aprendizagens);
 		
-		//String downloadURl = "";
-		//downloadURl = ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/objetoAprendizagem/download/").path(obj.getId().toString()).toUriString();
-		
 		obj = objetoAprendizagemService.upload(file, obj);
+		
+		//String downloadURl = ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/objetoAprendizagem/download/").path(obj.getId().toString()).toUriString();
 		
 		return new ResponseEntity<ObjetoAprendizagemResponse>(mapper.map(obj, ObjetoAprendizagemResponse.class), HttpStatus.CREATED);
 	}
