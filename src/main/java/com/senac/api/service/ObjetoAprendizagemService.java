@@ -54,6 +54,16 @@ public class ObjetoAprendizagemService {
 		return obj;
 	}
 	
+	public List<ObjetoAprendizagem> obterPorSituacaoAprendizagem(Long id){
+		List<ObjetoAprendizagem> objs = objetoAprendizagemRepository.findBySituacaoAprendizagem(id);
+		
+		if(objs.isEmpty()) {
+			throw new ObjectnotFoundException("SITUAÇÃO COM ID: '" + id + "' NÃO ENCONTRADO!");
+		}
+		
+		return objs;
+	}
+	
     public ObjetoAprendizagem getArquivo(Long fileId) throws Exception {
         return objetoAprendizagemRepository.findById(fileId).orElseThrow( () -> new Exception("Arquivo com Id: " + fileId + " não existe!"));
     }

@@ -59,7 +59,7 @@ public class ObjetoAprendizagemController {
 		
 		ModelMapper mapper = new ModelMapper();
 		ObjetoAprendizagem obj = new ObjetoAprendizagem();
-		obj.setDescricao(descricao);
+		obj.setDescricao(file.getOriginalFilename());
 		obj.setBlob(file.getBytes());
 		obj.setTipo(file.getContentType());
 		obj.setStatus(true);
@@ -101,6 +101,14 @@ public class ObjetoAprendizagemController {
 		Optional<ObjetoAprendizagem> obj = objetoAprendizagemService.obterPorId(id);
 		ObjetoAprendizagemResponse objRes = new ModelMapper().map(obj.get(), ObjetoAprendizagemResponse.class);
 		return new ResponseEntity<Optional<ObjetoAprendizagemResponse>>(Optional.of(objRes), HttpStatus.OK);
+	}
+	
+	@GetMapping("/situacaoAprendizagem/{id}")
+	public ResponseEntity<List<ObjetoAprendizagemResponse>> obterPorSituacaoAprendizagem(@PathVariable Long id){
+		List<ObjetoAprendizagem> objetos = objetoAprendizagemService.obterPorSituacaoAprendizagem(id);
+		ModelMapper mapper = new ModelMapper();
+		List<ObjetoAprendizagemResponse> resposta = objetos.stream().map(objeto -> mapper.map(objeto, ObjetoAprendizagemResponse.class)).collect(Collectors.toList());
+		return new ResponseEntity<>(resposta, HttpStatus.OK);
 	}
 	
 	@PutMapping("/{id}")

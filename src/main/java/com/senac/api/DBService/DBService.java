@@ -203,7 +203,9 @@ public class DBService {
 		
 		//badge
 		Badge badge1 = new Badge(null, "teste", null, true, nivel1);
-		badgeRepository.saveAll(Arrays.asList(badge1));
+		Badge badge2 = new Badge(null, "teste", null, true, nivel1);
+		Badge badge3 = new Badge(null, "teste", null, true, nivel1);
+		badgeRepository.saveAll(Arrays.asList(badge1, badge2, badge3));
 		
 		//grau_dificuldade
 		GrauDificuldade grau1 = new GrauDificuldade(null, "Fácil", true);
